@@ -116,11 +116,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="Scripts\jquery-1.9.0.intellisense.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.9.0.js" />
-    <Content Include="Scripts\jquery-1.9.0.min.js" />
+    <None Include="Content\Scripts\jquery-1.9.0.intellisense.js" />
+    <Content Include="Content\Scripts\bootstrap.js" />
+    <Content Include="Content\Scripts\bootstrap.min.js" />
+    <Content Include="Content\Scripts\jquery-1.9.0.js" />
+    <Content Include="Content\Scripts\jquery-1.9.0.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -136,7 +136,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-1.9.0.min.map" />
+    <Content Include="Content\Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\_LayoutPage1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -147,10 +147,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
+    <Folder Include="Content\Images\" />
+    <Folder Include="Content\Style\" />
     <Folder Include="Models\" />
     <Folder Include="Services\Entities\" />
-    <Folder Include="Style\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>
