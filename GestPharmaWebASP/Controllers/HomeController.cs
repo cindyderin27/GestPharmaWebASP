@@ -13,5 +13,6 @@ namespace GestPharmaWebASP.Controllers
         {
             return View();
         }
+        
     }
 }
