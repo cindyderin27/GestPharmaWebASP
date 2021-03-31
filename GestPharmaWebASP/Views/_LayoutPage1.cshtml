@@ -1,13 +1,73 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+
+    <link href="~/Content/Styles/stylecontact1-starter.css" rel="stylesheet" />
+    <link href="~/Content/Styles/styleIndex.css" rel="stylesheet" />
+    <link href="~/Content/Styles/bootstrapIndex.css" rel="stylesheet" />
+    <link href="~/Content/Styles/flexsliderIndex.css" rel="stylesheet" />
+    <link href="~/Content/Styles/fontawesomeindex-all.css" rel="stylesheet" />
+    <link href="~/Content/Styles/simpleLightboxIndex.css" rel="stylesheet" />
+    <link href="~/Content/Styles/blogIndex.css" rel="stylesheet" />
+
+   
+
+
+    <script src="~/Content/Scripts/allindex.js"></script>
+    <script src="~/Content/Scripts/appindex.js"></script>
+    <script src="~/Content/Scripts/bootstrapindex.js"></script>
+    <script src="~/Content/Scripts/jqueryindex.waypoints.min.js"></script>
+
+    <script src="~/Content/Scripts/modernizerindex.js"></script>
+    <script src="~/Content/Scripts/mainindex.js"></script>
+    <script src="~/Content/Scripts/popperindex.min.js"></script>
+    <script src="~/Content/Scripts/owlindex.carousel.js"></script>
+    <script src="~/content/scripts/moveindex-top.js"></script>
+    <script src="~/Content/Scripts/jquery.magnificindex-popup.min.js"></script>
+
+
+    @*<link href="~/Content/Styles/style-starter.css" rel="stylesheet" />
+        <script src="~/Content/Scripts/bootstrapcontact1.js"></script>*@
+    @*<link href="~/Content/Style/style-starter.css" rel="stylesheet" />*@
+    @*<link href="~/Content/Styles/FactureStyle.css" rel="stylesheet" />
+
+    *@
+    @*<script src="~/Content/Scripts/allindex.js"></script>
+        <script src="~/Content/Scripts/appindex.js"></script>
+        <script src="~/Content/Scripts/bootstrapindex.js"></script>
+        <script src="~/Content/Scripts/jqueryindex.countup.js"></script>
+        <script src="~/Content/Scripts/mainindex.js"></script>
+        <script src="~/Content/Scripts/owlindex.carousel.js"></script>
+        <script src="~/Content/Scripts/popperindex.min.js"></script>*@
+
+
 </head>
 <body>
+    @if (Request.IsAuthenticated)
+    {
+        var cookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+        var ticketInfo = FormsAuthentication.Decrypt(cookie.Value);
+        //var user = Newtonsoft.Json.JsonConvert.DeserializeObject<GestPharmaWebASP.Models.RegisterModel>(ticketInfo.UserData);
+        <a  title="" class="btn btn-outline-primary" href="@Url.Action("Login", "Account")">
+            Sign out
+        </a>
+    }
+    else
+    {
+        <a class="btn btn-outline-primary" href="@Url.Action("Login", "Account")">Sign in</a>
+    }
+
+   
     <div>
         @RenderBody()
     </div>
+
+
 </body>
+
 </html>

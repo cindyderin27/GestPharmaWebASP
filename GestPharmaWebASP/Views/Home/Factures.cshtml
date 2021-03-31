@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "Factures";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+<link href="~/Content/Styles/bootstrapAdministrateur.min.css" rel="stylesheet" />
+
+<link href="~/Content/Styles/fontAdministrateur.css" rel="stylesheet" />
+<link href="~/Content/Styles/fontAdministrateur-awesome.css" rel="stylesheet" />
+<link href="~/Content/Styles/morrisAdministrateur.css" rel="stylesheet" />
+<link href="~/Content/Styles/monthlyAdministrateur.css" rel="stylesheet" />
+
+<script src="~/Content/Scripts/jqueryAdministrateur2.0.3.min.js"></script>
+<script src="~/Content/Scripts/raphaelAdministrateur-min.js"></script>
+<script src="~/Content/Scripts/morrisAdministrateur.js"></script>
+<fieldset>
+    <legend class="legende">
+        Facture
+    </legend>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        Pharmacien  :
+                    </label>
+                    <input type="text" name="NomPharmacien" placeholder="Enter the name"
+                           class="form-control"
+                           value="@(Model !=null? Model.NomPharmacien :"")">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        Type de Paiement  :
+                    </label>
+                    <input type="text" name="PaymentTypeName" placeholder="Enter payment"
+                           class="form-control"
+                           value="@(Model !=null? Model.PaymentTypeName :"")">
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend class="legende">
+        Elements de la facture
+    </legend>
+
+    <div class="container">
+        <form class="foms">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>
+                            Nom du médicament :
+                        </label>
+                        <input type="text" name="" placeholder=""
+                               class="form-control"
+                               value="">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>
+                            Quantite :
+                        </label>
+                        <input type="number" style="text-align:right" name="" placeholder=""
+                               class="form-control"
+                               value="0.00">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>
+                            Prix Unitaire:
+                        </label>
+                        <input type="text" style="text-align:right" readonly="readonly" name=""
+                               class="form-control"
+                               value="0.00">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>
+                            Total:
+                        </label>
+                        <input type="text" style="text-align:right" readonly="readonly" name=""
+                               class="form-control"
+                               value="0.00">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="button" name="AddToList" id="btnAdd"
+                               class="btn btn-success"
+                               value="Ajouter à la liste">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</fieldset>
+
+<fieldset class="list">
+    <legend class="legende">
+        Liste des éléments de la facture
+    </legend>
+    <table style="width:100%">
+        <thead>
+            <tr class="entete">
+                <th class="tr-entete" hidden>Reference</th>
+                <th class="tr-entete">Nom du médicament</th>
+                <th class="tr-entete">Quantite</th>
+                <th class="tr-entete">Prix Unitaire</th>
+                <th class="tr-entete">Total</th>
+                <th class="tr-entete">Action</th>
+            </tr>
+        </thead>
+
+    </table>
+</fieldset>
+

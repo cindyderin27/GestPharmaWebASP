@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace GestPharmaWebASP
 {
@@ -13,6 +14,11 @@ namespace GestPharmaWebASP
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+        protected void Session_End()
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect(FormsAuthentication.LoginUrl);
         }
     }
 }
