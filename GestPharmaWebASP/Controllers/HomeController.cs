@@ -35,6 +35,12 @@ namespace GestPharmaWebASP.Controllers
             return View();
         }
         [Authorize]
+        public ActionResult Admin()
+        {
+            return View();
+        }
+
+        [Authorize]
         public ActionResult ListeCommande()
         {
             return View();
