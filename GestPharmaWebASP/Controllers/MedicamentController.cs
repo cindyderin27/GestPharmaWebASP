@@ -6,27 +6,27 @@ using System.Web.Mvc;
 
 namespace GestPharmaWebASP.Controllers
 {
-    public class CommandeController : Controller
+    public class MedicamentController : Controller
     {
-        // GET: Commande
-        public ActionResult Index()
+        // GET: Medicament
+        public ActionResult ListeMedicament()
         {
             return View();
         }
 
-        // GET: Commande/Details/5
+        // GET: Medicament/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Commande/Create
+        // GET: Medicament/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Commande/Create
+        // POST: Medicament/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +42,13 @@ namespace GestPharmaWebASP.Controllers
             }
         }
 
-        // GET: Commande/Edit/5
+        // GET: Medicament/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Commande/Edit/5
+        // POST: Medicament/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +64,13 @@ namespace GestPharmaWebASP.Controllers
             }
         }
 
-        // GET: Commande/Delete/5
+        // GET: Medicament/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Commande/Delete/5
+        // POST: Medicament/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
