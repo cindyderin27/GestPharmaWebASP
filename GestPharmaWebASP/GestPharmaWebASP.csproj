@@ -51,6 +51,7 @@
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -263,20 +264,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CommandeController.cs" />
-    <Compile Include="Controllers\DrugController.cs" />
-    <Compile Include="Controllers\FactureController.cs" />
+    <Compile Include="Controllers\CategorieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MedicamentController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\CategoryModel.cs" />
-    <Compile Include="Models\FactureModel.cs" />
+    <Compile Include="Models\Categorie.cs" />
     <Compile Include="Models\ForgotPasswordModel.cs" />
-    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\MedicamentModel.cs" />
+    <Compile Include="Models\Medicament.cs" />
     <Compile Include="Models\PaymentModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ResetPasswordModel.cs" />
@@ -362,16 +361,7 @@
     <Content Include="Views\Home\contact.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Home\Administrateur.cshtml" />
-    <Content Include="Views\Home\ListeCommande.cshtml" />
     <Content Include="Views\Home\Home1.cshtml" />
-    <Content Include="Views\Home\Factures.cshtml" />
-    <Content Include="Views\Home\Medicament.cshtml" />
-    <Content Include="Views\Drug\Create.cshtml" />
-    <Content Include="Views\Drug\Index.cshtml" />
-    <Content Include="Views\Drug\Edit.cshtml" />
-    <Content Include="Views\Drug\Details.cshtml" />
-    <Content Include="Views\Drug\Delete.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -382,8 +372,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Commande\" />
-    <Folder Include="Views\Facture\" />
+    <Folder Include="Views\Categorie\" />
+    <Folder Include="Views\Medicament\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

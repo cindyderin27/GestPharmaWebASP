@@ -13,6 +13,7 @@ namespace GestPharmaWebASP.Models
 
         public BaseModel()
         {
+
         }
 
         public BaseModel(bool isError, string message, RegisterModel userModel)
