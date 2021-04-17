@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="pharrm_bdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="IdCategorie" />
+          </Key>
+          <Property Name="IdCategorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReferenceCategorie" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomCategorie" Type="varchar(max)" Nullable="false" />
+          <Property Name="Taxe" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Commande">
+          <Key>
+            <PropertyRef Name="IdCommande" />
+          </Key>
+          <Property Name="IdCommande" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomCommande" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateCommande" Type="datetime" Nullable="false" />
+          <Property Name="Quantite" Type="int" Nullable="false" />
+          <Property Name="IdUtilisateur" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medicament">
+          <Key>
+            <PropertyRef Name="IdMedicament" />
+          </Key>
+          <Property Name="IdMedicament" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReferenceMedicament" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Designation" Type="varchar(max)" Nullable="false" />
+          <Property Name="Prix" Type="float" Nullable="false" />
+          <Property Name="DateFabrication" Type="date" Nullable="false" />
+          <Property Name="DatePeremption" Type="datetime" Nullable="false" />
+          <Property Name="Composition" Type="varchar(max)" />
+          <Property Name="Photo" Type="varchar(max)" Nullable="false" />
+          <Property Name="IdCategorie" Type="int" Nullable="false" />
+          <Property Name="QuantiteStock" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MedicamentCommander">
+          <Key>
+            <PropertyRef Name="IdMedicamentCommander" />
+          </Key>
+          <Property Name="IdMedicamentCommander" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMedicament" Type="int" Nullable="false" />
+          <Property Name="IdCommande" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="IdUtilisateur" />
+          </Key>
+          <Property Name="IdUtilisateur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomUtilisateur" Type="varchar(max)" Nullable="false" />
+          <Property Name="MotDePasse" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Statut" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Commande_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Commande" Type="Self.Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Commande">
+              <PropertyRef Name="IdUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medicament_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Medicament" Type="Self.Medicament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="Medicament">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicamentCommander_Commande">
+          <End Role="Commande" Type="Self.Commande" Multiplicity="1" />
+          <End Role="MedicamentCommander" Type="Self.MedicamentCommander" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Commande">
+              <PropertyRef Name="IdCommande" />
+            </Principal>
+            <Dependent Role="MedicamentCommander">
+              <PropertyRef Name="IdCommande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicamentCommander_Medicament">
+          <End Role="Medicament" Type="Self.Medicament" Multiplicity="1" />
+          <End Role="MedicamentCommander" Type="Self.MedicamentCommander" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicament">
+              <PropertyRef Name="IdMedicament" />
+            </Principal>
+            <Dependent Role="MedicamentCommander">
+              <PropertyRef Name="IdMedicament" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pharrm_bdModelStoreContainer">
+          <EntitySet Name="Categorie" EntityType="Self.Categorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Commande" EntityType="Self.Commande" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicament" EntityType="Self.Medicament" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicamentCommander" EntityType="Self.MedicamentCommander" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Commande_Utilisateur" Association="Self.FK_Commande_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Commande" EntitySet="Commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medicament_Categorie" Association="Self.FK_Medicament_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Medicament" EntitySet="Medicament" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicamentCommander_Commande" Association="Self.FK_MedicamentCommander_Commande">
+            <End Role="Commande" EntitySet="Commande" />
+            <End Role="MedicamentCommander" EntitySet="MedicamentCommander" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicamentCommander_Medicament" Association="Self.FK_MedicamentCommander_Medicament">
+            <End Role="Medicament" EntitySet="Medicament" />
+            <End Role="MedicamentCommander" EntitySet="MedicamentCommander" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pharrm_bdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="IdCategorie" />
+          </Key>
+          <Property Name="IdCategorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReferenceCategorie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NomCategorie" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Taxe" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Medicaments" Relationship="Self.FK_Medicament_Categorie" FromRole="Categorie" ToRole="Medicament" />
+        </EntityType>
+        <EntityType Name="Commande">
+          <Key>
+            <PropertyRef Name="IdCommande" />
+          </Key>
+          <Property Name="IdCommande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomCommande" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateCommande" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Quantite" Type="Int32" Nullable="false" />
+          <Property Name="IdUtilisateur" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK_Commande_Utilisateur" FromRole="Commande" ToRole="Utilisateur" />
+          <NavigationProperty Name="MedicamentCommanders" Relationship="Self.FK_MedicamentCommander_Commande" FromRole="Commande" ToRole="MedicamentCommander" />
+        </EntityType>
+        <EntityType Name="Medicament">
+          <Key>
+            <PropertyRef Name="IdMedicament" />
+          </Key>
+          <Property Name="IdMedicament" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReferenceMedicament" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Designation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prix" Type="Double" Nullable="false" />
+          <Property Name="DateFabrication" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DatePeremption" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Composition" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdCategorie" Type="Int32" Nullable="false" />
+          <Property Name="QuantiteStock" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK_Medicament_Categorie" FromRole="Medicament" ToRole="Categorie" />
+          <NavigationProperty Name="MedicamentCommanders" Relationship="Self.FK_MedicamentCommander_Medicament" FromRole="Medicament" ToRole="MedicamentCommander" />
+        </EntityType>
+        <EntityType Name="MedicamentCommander">
+          <Key>
+            <PropertyRef Name="IdMedicamentCommander" />
+          </Key>
+          <Property Name="IdMedicamentCommander" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMedicament" Type="Int32" Nullable="false" />
+          <Property Name="IdCommande" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Commande" Relationship="Self.FK_MedicamentCommander_Commande" FromRole="MedicamentCommander" ToRole="Commande" />
+          <NavigationProperty Name="Medicament" Relationship="Self.FK_MedicamentCommander_Medicament" FromRole="MedicamentCommander" ToRole="Medicament" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="IdUtilisateur" />
+          </Key>
+          <Property Name="IdUtilisateur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomUtilisateur" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MotDePasse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Statut" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Commandes" Relationship="Self.FK_Commande_Utilisateur" FromRole="Utilisateur" ToRole="Commande" />
+        </EntityType>
+        <Association Name="FK_Medicament_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Medicament" Type="Self.Medicament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="Medicament">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commande_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Commande" Type="Self.Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Commande">
+              <PropertyRef Name="IdUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicamentCommander_Commande">
+          <End Role="Commande" Type="Self.Commande" Multiplicity="1" />
+          <End Role="MedicamentCommander" Type="Self.MedicamentCommander" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Commande">
+              <PropertyRef Name="IdCommande" />
+            </Principal>
+            <Dependent Role="MedicamentCommander">
+              <PropertyRef Name="IdCommande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicamentCommander_Medicament">
+          <End Role="Medicament" Type="Self.Medicament" Multiplicity="1" />
+          <End Role="MedicamentCommander" Type="Self.MedicamentCommander" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicament">
+              <PropertyRef Name="IdMedicament" />
+            </Principal>
+            <Dependent Role="MedicamentCommander">
+              <PropertyRef Name="IdMedicament" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pharrm_bdEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Categorie" />
+          <EntitySet Name="Commandes" EntityType="Self.Commande" />
+          <EntitySet Name="Medicaments" EntityType="Self.Medicament" />
+          <EntitySet Name="MedicamentCommanders" EntityType="Self.MedicamentCommander" />
+          <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateur" />
+          <AssociationSet Name="FK_Medicament_Categorie" Association="Self.FK_Medicament_Categorie">
+            <End Role="Categorie" EntitySet="Categories" />
+            <End Role="Medicament" EntitySet="Medicaments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commande_Utilisateur" Association="Self.FK_Commande_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateurs" />
+            <End Role="Commande" EntitySet="Commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicamentCommander_Commande" Association="Self.FK_MedicamentCommander_Commande">
+            <End Role="Commande" EntitySet="Commandes" />
+            <End Role="MedicamentCommander" EntitySet="MedicamentCommanders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicamentCommander_Medicament" Association="Self.FK_MedicamentCommander_Medicament">
+            <End Role="Medicament" EntitySet="Medicaments" />
+            <End Role="MedicamentCommander" EntitySet="MedicamentCommanders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pharrm_bdModelStoreContainer" CdmEntityContainer="pharrm_bdEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="pharrm_bdModel.Categorie">
+              <MappingFragment StoreEntitySet="Categorie">
+                <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+                <ScalarProperty Name="ReferenceCategorie" ColumnName="ReferenceCategorie" />
+                <ScalarProperty Name="NomCategorie" ColumnName="NomCategorie" />
+                <ScalarProperty Name="Taxe" ColumnName="Taxe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Commandes">
+            <EntityTypeMapping TypeName="pharrm_bdModel.Commande">
+              <MappingFragment StoreEntitySet="Commande">
+                <ScalarProperty Name="IdCommande" ColumnName="IdCommande" />
+                <ScalarProperty Name="NomCommande" ColumnName="NomCommande" />
+                <ScalarProperty Name="DateCommande" ColumnName="DateCommande" />
+                <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+                <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicaments">
+            <EntityTypeMapping TypeName="pharrm_bdModel.Medicament">
+              <MappingFragment StoreEntitySet="Medicament">
+                <ScalarProperty Name="IdMedicament" ColumnName="IdMedicament" />
+                <ScalarProperty Name="ReferenceMedicament" ColumnName="ReferenceMedicament" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Prix" ColumnName="Prix" />
+                <ScalarProperty Name="DateFabrication" ColumnName="DateFabrication" />
+                <ScalarProperty Name="DatePeremption" ColumnName="DatePeremption" />
+                <ScalarProperty Name="Composition" ColumnName="Composition" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+                <ScalarProperty Name="QuantiteStock" ColumnName="QuantiteStock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicamentCommanders">
+            <EntityTypeMapping TypeName="pharrm_bdModel.MedicamentCommander">
+              <MappingFragment StoreEntitySet="MedicamentCommander">
+                <ScalarProperty Name="IdMedicamentCommander" ColumnName="IdMedicamentCommander" />
+                <ScalarProperty Name="IdMedicament" ColumnName="IdMedicament" />
+                <ScalarProperty Name="IdCommande" ColumnName="IdCommande" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilisateurs">
+            <EntityTypeMapping TypeName="pharrm_bdModel.Utilisateur">
+              <MappingFragment StoreEntitySet="Utilisateur">
+                <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
+                <ScalarProperty Name="NomUtilisateur" ColumnName="NomUtilisateur" />
+                <ScalarProperty Name="MotDePasse" ColumnName="MotDePasse" />
+                <ScalarProperty Name="Statut" ColumnName="Statut" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

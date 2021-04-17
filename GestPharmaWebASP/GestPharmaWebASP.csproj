@@ -193,6 +193,7 @@
     <Content Include="Content\Scripts\simpleLightboxhome1.js" />
     <Content Include="Content\Scripts\simpleLightboxIndex.js" />
     <Content Include="Content\Scripts\TableScript.js" />
+    <Content Include="Content\Styles\AdminStyle.css" />
     <Content Include="Content\Styles\aosIndex-animation.css" />
     <Content Include="Content\Styles\aosIndex.css" />
     <Content Include="Content\Styles\blogIndex.css" />
@@ -212,7 +213,12 @@
     <Content Include="Content\Styles\fontlogin-awesome.css" />
     <Content Include="Content\Styles\jqueryRegsiter-ui.css" />
     <Content Include="Content\Styles\jqvmapAdministrateur.css" />
+    <Content Include="Content\Styles\la-brands-400.svg" />
+    <Content Include="Content\Styles\la-regular-400.svg" />
+    <Content Include="Content\Styles\la-solid-900.svg" />
     <Content Include="Content\Styles\lightboxAdministrateur.css" />
+    <Content Include="Content\Styles\line-awesome.css" />
+    <Content Include="Content\Styles\line-awesome.min.css" />
     <Content Include="Content\Styles\minimalAdministrateur.css" />
     <Content Include="Content\Styles\monthlyAdministrateur.css" />
     <Content Include="Content\Styles\morrisAdministrateur.css" />
@@ -236,6 +242,9 @@
     <Content Include="fonts\fontawesomeAdministrateur-webfont.svg" />
     <Content Include="fonts\fontlogin-awesome.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\la-brands-400.svg" />
+    <Content Include="fonts\la-regular-400.svg" />
+    <Content Include="fonts\la-solid-900.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -316,6 +325,30 @@
     <Content Include="fonts\glyphiconsAdministrateur-halflings-regular.woff2" />
     <Content Include="Content\Scripts\jquery-3.4.1.min.map" />
     <Content Include="Content\Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Content\Styles\la-brands-400.eot" />
+    <Content Include="Content\Styles\la-brands-400.ttf" />
+    <Content Include="Content\Styles\la-brands-400.woff" />
+    <Content Include="Content\Styles\la-brands-400.woff2" />
+    <Content Include="Content\Styles\la-regular-400.eot" />
+    <Content Include="Content\Styles\la-regular-400.ttf" />
+    <Content Include="Content\Styles\la-regular-400.woff" />
+    <Content Include="Content\Styles\la-regular-400.woff2" />
+    <Content Include="Content\Styles\la-solid-900.eot" />
+    <Content Include="Content\Styles\la-solid-900.ttf" />
+    <Content Include="Content\Styles\la-solid-900.woff" />
+    <Content Include="Content\Styles\la-solid-900.woff2" />
+    <Content Include="fonts\la-brands-400.eot" />
+    <Content Include="fonts\la-brands-400.ttf" />
+    <Content Include="fonts\la-brands-400.woff" />
+    <Content Include="fonts\la-brands-400.woff2" />
+    <Content Include="fonts\la-regular-400.eot" />
+    <Content Include="fonts\la-regular-400.ttf" />
+    <Content Include="fonts\la-regular-400.woff" />
+    <Content Include="fonts\la-regular-400.woff2" />
+    <Content Include="fonts\la-solid-900.eot" />
+    <Content Include="fonts\la-solid-900.ttf" />
+    <Content Include="fonts\la-solid-900.woff" />
+    <Content Include="fonts\la-solid-900.woff2" />
     <None Include="packages.config" />
     <Content Include="Content\Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\_LayoutPage1.cshtml" />
@@ -339,6 +372,7 @@
     <Content Include="Views\Drug\Edit.cshtml" />
     <Content Include="Views\Drug\Details.cshtml" />
     <Content Include="Views\Drug\Delete.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
