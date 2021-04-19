@@ -33,16 +33,11 @@ namespace GestPharmaWebASP.Controllers
             return View(model);
         }
 
-
         public ActionResult Create()
         {
             Categorie model = new Categorie();
             return View(model);
         }
-
-
-
-
 
         public async Task<ActionResult> Edit(int id)
         {
@@ -62,9 +57,6 @@ namespace GestPharmaWebASP.Controllers
             }
             return View("Edit", model);
         }
-
-
-
 
         [HttpPost]
         public async Task<ActionResult> Edit(Categorie model)
@@ -111,11 +103,6 @@ namespace GestPharmaWebASP.Controllers
 
             return View(model);
         }
-
-
-
-
-
 
         [HttpDelete]
         public async Task<ActionResult> Delete(int id)

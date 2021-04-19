@@ -1,0 +1,37 @@
+﻿@model IEnumerable<GestPharmaWebASP.Models.Medicament>
+@{
+    ViewBag.Title = "AfficherMedicament";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <title> drug pages </title>
+</head>
+<body>
+    @foreach (var medicament in Model)
+    {
+        <div class="col-md-3 col-sm-4">
+            <div class="thumbnail">
+                <img src="@medicament.Photo" alt="computer man" style="width:250px;height:200px">
+                <h5>@medicament.Designation</h5>
+            </div>
+        </div>
+    }
+
+</body>
+</html>
+
+
+

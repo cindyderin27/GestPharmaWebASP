@@ -47,15 +47,14 @@ namespace GestPharmaWebASP.Controllers
                     var json = await response.Content.ReadAsStringAsync();
                     var categories = JsonConvert.DeserializeObject<IEnumerable<Categorie>>(json);
                     model.Categories = categories.Select
-                           (
-                           x =>
-                                       new SelectListItem
-                                       {
-                                           Text = x.NomCategorie,
-                                           Value = x.IdCategorie.ToString()
-
-                                       }
-                                       );
+                    (
+                        x =>
+                        new SelectListItem
+                        {
+                            Text = x.NomCategorie,
+                            Value = x.IdCategorie.ToString()
+                        }
+                    );
                 }
             }
             return View(model);
@@ -119,16 +118,15 @@ namespace GestPharmaWebASP.Controllers
                         var json = await response.Content.ReadAsStringAsync();
                         var categories = JsonConvert.DeserializeObject<IEnumerable<Categorie>>(json);
                         model.Categories = categories.Select
-                            (
+                        (
                             x =>
                             new SelectListItem
                             {
                                 Text = x.NomCategorie,
                                 Value = x.IdCategorie.ToString(),
                                 Selected = model.IdCategorie == x.IdCategorie
-
                             }
-                            );
+                        );
                     }
                 }
 
@@ -138,11 +136,11 @@ namespace GestPharmaWebASP.Controllers
                     MultipartFormDataContent multipart = new MultipartFormDataContent();
                     var json = JsonConvert.SerializeObject(model);
                     StringContent content = new StringContent
-                        (
+                    (
                         json,
                         Encoding.UTF8,
                         "application/json"
-                        );
+                    );
                     multipart.Add(content, "data");
                     //if (model.Photo.ContentLength > 0)
                     //{
@@ -182,11 +180,6 @@ namespace GestPharmaWebASP.Controllers
 
             return View(model);
         }
-
-
-
-
-
 
         [HttpDelete]
         public async Task<ActionResult> Delete(int id)

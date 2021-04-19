@@ -159,18 +159,6 @@ namespace GestPharmaWebASP.Controllers
             }
             return RedirectToAction("Login", "Account");
         }
-
-
-        public ActionResult Facture()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Facture(FactureModel model)
-        {
-
-
-            return View(model);
-        }
+       
     }
 }

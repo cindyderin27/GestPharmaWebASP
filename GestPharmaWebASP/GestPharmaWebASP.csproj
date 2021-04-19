@@ -267,7 +267,7 @@
     <Compile Include="Controllers\CategorieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicamentController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\PanierController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -276,6 +276,7 @@
     <Compile Include="Models\ForgotPasswordModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Medicament.cs" />
+    <Compile Include="Models\Panier.cs" />
     <Compile Include="Models\PaymentModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ResetPasswordModel.cs" />
@@ -363,6 +364,7 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Home\Home1.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
+    <Content Include="Views\Medicament\AfficherMedicament.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -373,8 +375,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Categorie\" />
-    <Folder Include="Views\Medicament\" />
-    <Folder Include="Views\User\" />
+    <Folder Include="Views\Panier\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
