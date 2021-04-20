@@ -1,0 +1,25 @@
+﻿@model IEnumerable<GestPharmaWebASP.Models.Categorie>
+@{
+    ViewBag.Title = "ListerCategorie";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+}
+
+@foreach (var categorie in Model)
+{
+    <div class=" col-md-3 col-sm-4">
+        <div class="thumbnail">
+            <div class="caption">
+                <center>
+                    <a href="/Home/listerProduitCategorie?categorie=@categorie.NomCategorie" class="btn btn-primary" role="button">@categorie.NomCategorie</a>
+                </center>
+            </div>
+        </div>
+    </div>
+}
+

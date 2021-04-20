@@ -128,6 +128,24 @@
     <Content Include="Content\Images\LOGOAPP.mp4" />
     <Content Include="Content\Images\Logopharm.jpg" />
     <Content Include="Content\Images\med1.jpg" />
+    <Content Include="Content\Images\Medoc\AAS 325 ENTRIQUE.jpg" />
+    <Content Include="Content\Images\Medoc\AAS 500.jpg" />
+    <Content Include="Content\Images\Medoc\ABBOTT CITALOPRAM.jpg" />
+    <Content Include="Content\Images\Medoc\B 50 COMPLEX.jpg" />
+    <Content Include="Content\Images\Medoc\B COMPLEX 50.jpg" />
+    <Content Include="Content\Images\Medoc\BACLOFEN 20MG.jpg" />
+    <Content Include="Content\Images\Medoc\C.E.S" />
+    <Content Include="Content\Images\Medoc\CADUET.jpg" />
+    <Content Include="Content\Images\Medoc\CAL 500D.jpg" />
+    <Content Include="Content\Images\Medoc\D CAL.jpg" />
+    <Content Include="Content\Images\Medoc\D GEL.jpg" />
+    <Content Include="Content\Images\Medoc\D TABS.jpg" />
+    <Content Include="Content\Images\Medoc\DACALIN C.jpg" />
+    <Content Include="Content\Images\Medoc\EBIXA.jpg" />
+    <Content Include="Content\Images\Medoc\FAMOTIDINE.jpg" />
+    <Content Include="Content\Images\Medoc\FAMPYRA.jpg" />
+    <Content Include="Content\Images\Medoc\FEMARA.jpg" />
+    <Content Include="Content\Images\Medoc\Sinutab 15 comprimés.jpg" />
     <Content Include="Content\Images\Michel.jpg" />
     <Content Include="Content\Images\MK.jpg" />
     <Content Include="Content\Images\O1.jpg" />
@@ -362,9 +380,14 @@
     <Content Include="Views\Home\contact.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Home\Home1.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Medicament\AfficherMedicament.cshtml" />
+    <Content Include="Views\Home\ListerCategorie.cshtml" />
+    <Content Include="Views\Medicament\Create.cshtml" />
+    <Content Include="Views\Medicament\Edit.cshtml" />
+    <Content Include="Views\Medicament\Delete.cshtml" />
+    <Content Include="Views\Home\ListeMedoc.cshtml" />
+    <Content Include="Views\Panier\AjouterPanier.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -375,7 +398,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Categorie\" />
-    <Folder Include="Views\Panier\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

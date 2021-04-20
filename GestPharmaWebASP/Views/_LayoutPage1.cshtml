@@ -32,20 +32,6 @@
     <script src="~/Content/Scripts/jquery.magnificindex-popup.min.js"></script>
 
 
-    @*<link href="~/Content/Styles/style-starter.css" rel="stylesheet" />
-        <script src="~/Content/Scripts/bootstrapcontact1.js"></script>*@
-    @*<link href="~/Content/Style/style-starter.css" rel="stylesheet" />*@
-    @*<link href="~/Content/Styles/FactureStyle.css" rel="stylesheet" />
-
-    *@
-    @*<script src="~/Content/Scripts/allindex.js"></script>
-        <script src="~/Content/Scripts/appindex.js"></script>
-        <script src="~/Content/Scripts/bootstrapindex.js"></script>
-        <script src="~/Content/Scripts/jqueryindex.countup.js"></script>
-        <script src="~/Content/Scripts/mainindex.js"></script>
-        <script src="~/Content/Scripts/owlindex.carousel.js"></script>
-        <script src="~/Content/Scripts/popperindex.min.js"></script>*@
-
 
 </head>
 <body>
@@ -54,20 +40,15 @@
         var cookie = Request.Cookies[FormsAuthentication.FormsCookieName];
         var ticketInfo = FormsAuthentication.Decrypt(cookie.Value);
         //var user = Newtonsoft.Json.JsonConvert.DeserializeObject<GestPharmaWebASP.Models.RegisterModel>(ticketInfo.UserData);
-        <a  title="" class="btn btn-outline-primary" href="@Url.Action("Login", "Account")">
-            Sign out
-        </a>
     }
     else
     {
         <a class="btn btn-outline-primary" href="@Url.Action("Login", "Account")">Sign in</a>
     }
-
-   
+ 
     <div>
         @RenderBody()
     </div>
-
 
 </body>
 

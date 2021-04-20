@@ -1,8 +1,11 @@
 ﻿using GestPharmaWebASP.Models;
 using GestPharmaWebASP.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -17,7 +20,6 @@ namespace GestPharmaWebASP.Controllers
             return View();
         }
      
-
         [AllowAnonymous]
         public ActionResult contact()
         {
@@ -25,10 +27,10 @@ namespace GestPharmaWebASP.Controllers
         }
 
         [AllowAnonymous]
-            public ActionResult About()
-            {
-                return View();
-            }
+        public ActionResult About()
+        {
+            return View();
+        }
         [Authorize]
         public ActionResult Administrateur()
         {
@@ -40,38 +42,22 @@ namespace GestPharmaWebASP.Controllers
             return View();
         }
 
-        [Authorize]
-        public ActionResult ListeCommande()
+        public async Task<ActionResult> ListerCategorie()
         {
-            return View();
-        }
-        //public ActionResult ListeMedicament()
-        //{
-        //    return View();
-        //}
-        [Authorize]
-        public ActionResult Factures()
-        {
-            return View();
-        }
-        [Authorize]
-        public ActionResult InfoAdmin()
-        {
-            return View();
-        }
-        public ActionResult Home1()
-        {
-            return View();
-        }
-        [Authorize]
-        public ActionResult Medicament()
-        {
-            return View();
-        }
-        [Authorize]
-        public ActionResult Commande()
-        {
-            return View();
+            IEnumerable<Categorie> model = new List<Categorie>();
+            using (HttpClient client = new HttpClient())
+            {
+                var response = await client.GetAsync
+                    (
+                        "http://localhost:81/GespharmWeb.Api/api/Categorie"
+                    );
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    model = JsonConvert.DeserializeObject<IEnumerable<Categorie>>(json);
+                }
+            }
+            return View(model);
         }
 
     }

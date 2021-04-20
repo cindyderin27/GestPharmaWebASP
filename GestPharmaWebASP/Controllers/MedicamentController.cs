@@ -92,7 +92,7 @@ namespace GestPharmaWebASP.Controllers
                         {
                             Text = x.NomCategorie,
                             Value = x.IdCategorie.ToString(),
-                            Selected = x.IdCategorie == model.Categorie.IdCategorie
+                            //Selected = x.Id == model.Proprietaire.Id
                         }
                         );
                 }
@@ -124,16 +124,16 @@ namespace GestPharmaWebASP.Controllers
                             {
                                 Text = x.NomCategorie,
                                 Value = x.IdCategorie.ToString(),
-                                Selected = model.IdCategorie == x.IdCategorie
+                              //  Selected = model.IdCategorie == x.IdCategorie
                             }
                         );
                     }
                 }
 
+                MultipartFormDataContent multipart = new MultipartFormDataContent();
 
                 if (ModelState.IsValid)
                 {
-                    MultipartFormDataContent multipart = new MultipartFormDataContent();
                     var json = JsonConvert.SerializeObject(model);
                     StringContent content = new StringContent
                     (
@@ -142,18 +142,18 @@ namespace GestPharmaWebASP.Controllers
                         "application/json"
                     );
                     multipart.Add(content, "data");
-                    //if (model.Photo.ContentLength > 0)
-                    //{
-                    //    byte[] picture = new byte[model.Image.ContentLength];
-                    //    model.Image.InputStream.Read(picture, 0, picture.Length);
-                    //    ByteArrayContent byteContent = new ByteArrayContent(picture);
-                    //    multipart.Add(byteContent, "picture", model.Image.FileName);
-                    //}
+                    if (model.Image.ContentLength > 0)
+                    {
+                        byte[] picture = new byte[model.Image.ContentLength];
+                        model.Image.InputStream.Read(picture, 0, picture.Length);
+                        ByteArrayContent byteContent = new ByteArrayContent(picture);
+                        multipart.Add(byteContent, "picture", model.Image.FileName);
+                    }
 
                     using (HttpClient client = new HttpClient())
                     {
                         HttpResponseMessage response;
-                        if (model.IdCategorie == 0)
+                        if (model.IdMedicament == 0)
                         {
                             response = await client.PostAsync
                                 (
@@ -169,8 +169,17 @@ namespace GestPharmaWebASP.Controllers
                                 multipart
                                 );
                         }
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return RedirectToAction("AfficherMedicament");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", await response.Content.ReadAsStringAsync());
+                        }
+
                     }
-                    return RedirectToAction("AfficherMedicament");
+                    //return RedirectToAction("AfficherMedicament");
                 }
             }
             catch (Exception ex)
@@ -187,9 +196,9 @@ namespace GestPharmaWebASP.Controllers
             using (HttpClient client = new HttpClient())
             {
                 var response = await client.DeleteAsync
-                    (
+                (
                     " http://localhost:81/GespharmWeb.Api/api/Medicament?id=" + id
-                    );
+                );
            
             }
             return RedirectToAction("AfficherMedicament");

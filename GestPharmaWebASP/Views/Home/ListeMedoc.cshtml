@@ -1,0 +1,57 @@
+﻿@model IEnumerable<GestPharmaWebASP.Models.Medicament>
+@{
+    ViewBag.Title = "ListeMedoc";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <title> drug pages </title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="~/Content/Images/O1.jpg" class="img-responsive" alt="Generic placeholder image" style="width: 350px; height: 250px;">
+            <h2>
+                Antibiotiques
+            </h2>
+            <p><a class="btn btn-default" href="/Home/listerProduitType?type=Femme" role="button">Détails »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img src="~/Content/Images/med1.jpg" class="img-responsive" alt="Generic placeholder image" style="width: 350px; height: 250px;">
+            <h2>Anti-inflammatoires</h2>
+            <p><a class="btn btn-default" href="/Home/listerProduitType?type=Femme" role="button">Détails »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img src="~/Content/Images/phar2.jpg" class="img-responsive" alt="Generic placeholder image" style="width: 350px; height: 250px;">
+            <h2>Desinfectants</h2>
+            <p><a class="btn btn-default" href="/Home/listerProduitType?type=Bebe" role="button">Détails »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img class="img-responsive" src="~/Content/Images/phar.jpg" alt="Generic placeholder image" style="width: 350px; height: 250px;">
+            <h2>Antimycosiques</h2>
+            <p><a class="btn btn-default" href="/Home/listerProduitType?type=Bebe" role="button">Détails »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img src="~/Content/Images/tip.png" class="img-responsive" alt="Generic placeholder image" style="width: 350px; height: 250px;">
+            <h2>Antiviraux</h2>
+            <p><a class="btn btn-default" href="/Home/listerProduitType?type=Bebe" role="button">Détails »</a></p>
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        @foreach (var medicament in Model)
+        {
+            <div class="col-md-3 col-sm-4">
+                <div class="thumbnail">
+                    <img src="@medicament.Photo" alt="computer man" style="width:250px;height:200px">
+                    <h5>@medicament.Designation</h5>
+                </div>
+            </div>
+        }
+    </div>
+
